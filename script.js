@@ -1,5 +1,5 @@
 const form = document.querySelector('#controles')
-const css = document.querySelector('[data-creator="css"]')
+const css = document.querySelector('[data-creator="cssText"]')
 const button = document.querySelector('[data-creator="button"]')
 const createCss = document.querySelector('[data-creator="button-css"]')
 
