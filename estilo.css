@@ -54,3 +54,15 @@ form button{
     margin: 0 auto;
     display: block;
 }
+
+.css{
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.content-button span{
+    padding: 2px 0;
+    display: block;   
+    font-family: Arial, Helvetica, sans-serif;
+    color: #313131;
+}
