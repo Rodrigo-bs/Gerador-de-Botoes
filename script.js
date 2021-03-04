@@ -36,35 +36,16 @@ const mudarStyle = {
     },
 }
 
-function createCssCode(event){
-    event.preventDefault()
-    /* const p = document.createElement('p')
-    const styleButton = button.style
-    let first = 1
-    
-    for (let i = 0; i < styleButton.length; i++) {
-        if(styleButton[i].substring(styleButton[i].length - 6) == 'radius')
-            p.innerText = styleButton.borderRadius
-
-        else if((styleButton[i].substring(0, 6) == 'border')){
-            const anterior = styleButton.border
-
-            if(anterior != styleButton.border || first == 1){
-                p.innerText += styleButton.border
-                first = 0
-            }
-        }
-            
-        css.appendChild(p)
-    } */
-}
-
 function addCss(event){
     const name = event.target.name
     const valor = event.target.value
-    const cssAtributo =  event.target.previousElementSibling.innerText + ': ' +valor+';'
+    
     mudarStyle[name](valor)
+    showCss()
 }
 
-createCss.addEventListener('click', createCssCode)
+function showCss(){
+    css.innerHTML = '<span>' + button.style.cssText.split('; ').join(';</span><span>')
+}
+
 form.addEventListener('change', addCss)
