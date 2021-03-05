@@ -1,5 +1,5 @@
 const form = document.querySelector('#controles')
-const css = document.querySelector('[data-creator="css"]')
+const limpar = document.querySelector('[data-creator="limpar-padrao"]')
 const button = document.querySelector('[data-creator="button"]')
 const createCss = document.querySelector('[data-creator="button-css"]')
 
@@ -21,7 +21,7 @@ const mudarStyle = {
     },
     width(value){
         this.element.style.width = value + 'px'
-    },
+        },
     border(value){
         this.element.style.border = value
     },
@@ -32,7 +32,7 @@ const mudarStyle = {
         this.element.style.fontFamily = value
     },
     fontSize(value){
-        this.element.style.fontSize = value
+        this.element.style.fontSize = value + 'px'
     },
 }
 
@@ -41,11 +41,32 @@ function addCss(event){
     const valor = event.target.value
     
     mudarStyle[name](valor)
+    saveValues(name, valor)
     showCss()
+}
+
+function saveValues(nome, value){
+    localStorage[nome] = value
+}
+
+function setValues(){
+    const propriedades = Object.keys(localStorage)
+    
+    propriedades.forEach(propriedade => {
+        mudarStyle[propriedade](localStorage[propriedade])
+        form.elements[propriedade].value = localStorage[propriedade]
+    })
+}
+
+function limparPadrao(event){
+    event.preventDefault()
+    localStorage.clear()
 }
 
 function showCss(){
     css.innerHTML = '<span>' + button.style.cssText.split('; ').join(';</span><span>')
 }
 
+limpar.addEventListener('click', limparPadrao)
 form.addEventListener('change', addCss)
+setValues()
