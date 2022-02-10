@@ -1,2 +1,3 @@
-# CriadorDeButtons
-Um painel de configurações que dão estilo a um botão.
+# Gerador de Botões
+
+Uma página simples para gerar botões de forma dinâmica.
